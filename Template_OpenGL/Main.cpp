@@ -74,7 +74,7 @@ double taxaRotacao_z = taxaRotacao;
 
 int main(int argc, char** argv) {
 
-	quadrado = criar_quadrado(128, 128, 30);
+	quadrado = criar_quadrado(0, 0, 0);
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE); // Double buffer
@@ -333,9 +333,9 @@ void rotacionar(Quadrado& poligono, double angulo_x, double angulo_y, double ang
 	pivo.z = poligono.posicao.z;
 
 	for (int i = 0; i < poligono.vertices.size(); i++) {
-		//poligono.vertices[i].x -= pivo.x;
-		//poligono.vertices[i].y -= pivo.y;
-		//poligono.vertices[i].z -= pivo.z;
+		poligono.vertices[i].x -= pivo.x;
+		poligono.vertices[i].y -= pivo.y;
+		poligono.vertices[i].z -= pivo.z;
 
 		/*
 		double matriz_x[3][3];
@@ -387,9 +387,9 @@ void rotacionar(Quadrado& poligono, double angulo_x, double angulo_y, double ang
 		poligono.vertices[i].y = (sin(angulo_z) * cos(angulo_y)) * poligono.vertices[i].x + ((sin(angulo_z) * sin(angulo_y) * sin(angulo_x)) + (cos(angulo_z) * cos(angulo_x))) * poligono.vertices[i].y + ((sin(angulo_z) * sin(angulo_y) * cos(angulo_x)) - (cos(angulo_z) * sin(angulo_x))) * poligono.vertices[i].z;
 		poligono.vertices[i].z = (-sin(angulo_y)) * poligono.vertices[i].x + (cos(angulo_y) * sin(angulo_x)) * poligono.vertices[i].y + (cos(angulo_y) * cos(angulo_x)) * poligono.vertices[i].z;
 
-		//poligono.vertices[i].x += pivo.x;
-		//poligono.vertices[i].y += pivo.y;
-		//poligono.vertices[i].z += pivo.z;
+		poligono.vertices[i].x += pivo.x;
+		poligono.vertices[i].y += pivo.y;
+		poligono.vertices[i].z += pivo.z;
 	}
 
 }
